@@ -56,14 +56,13 @@ https://hyperevm-block-toggle.vercel.app/
 
 ## Network Configuration
 
-The deployment script is configured in `script/deploy.ts`. By default, it's set up for Polygon Mainnet (chainId: 137), but you can modify the following parameters for your target network:
+The deployment script is configured in `script/deploy.ts`. By default, it's set up for HyperEVM Testnet (chainId: 998), but you can modify the following parameters for your target network:
 
 ```typescript
-const chainId = 999; // Change to your target network
+const chainId = 998;
 const config = {
   // ...
-  rpcUrl: "https://rpc.hypurrscan.io" // Change to your preferred HyperEVM fallback RPC
-};
+  rpcUrl: "https://rpc.hyperliquid-testnet.xyz/evm"
 ```
 ## Verify Contract after deployment:
 
