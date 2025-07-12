@@ -1,13 +1,13 @@
 import fs from "fs";
 import path from "path";
 import dotenv from "dotenv";
-dotenv.config();
 import {
   FordefiWeb3Provider,
   FordefiProviderConfig
 } from "@fordefi/web3-provider";
 import { ethers } from "ethers";
 
+dotenv.config();
 
 // 1. Configure your Fordefi secrets
 const FORDEFI_API_USER_TOKEN = process.env.FORDEFI_API_USER_MACBOOK_PRO_BOT ?? 
@@ -18,7 +18,7 @@ const PEM_PRIVATE_KEY = fs.readFileSync(privateKeyFilePath, "utf8") ??
 
 
 // 2. Chain ID configuration
-//    Example: deploying on HyperEVM (chainId=137)
+//    Example: deploying on HyperEVM Testnet (chainId=998)
 const chainId = 998;
 
 
@@ -28,7 +28,7 @@ const config: FordefiProviderConfig = {
   address: "0x5b7a034488F0BDE8bAD66f49cf9587ad40B6c757", // Your Fordefi EVM Vault address
   apiUserToken: FORDEFI_API_USER_TOKEN,
   apiPayloadSignKey: PEM_PRIVATE_KEY,
-  rpcUrl: "https://hyperliquid-json-rpc.stakely.io" // Fallback RPC
+  rpcUrl: "https://rpc.hyperliquid-testnet.xyz/evm" // Fallback RPC
 };
 
 async function main() {
@@ -39,11 +39,11 @@ async function main() {
   const provider = new ethers.BrowserProvider(fordefiProvider);
   const signer = await provider.getSigner();
 
-  // C) Load the Foundry artifact from `out/Counter.sol/Counter.json`
-  const lockArtifactPath = path.join(__dirname, "..", "out", "HypercoreWorkerMinimal.sol", "SimplifiedHyperCoreInteraction.json");
+  // C) Load the Foundry artifact
+  const lockArtifactPath = path.join(__dirname, "..", "out", "CoreWriterCaller.sol", "CoreWriterCaller.json");
   const lockArtifact = JSON.parse(fs.readFileSync(lockArtifactPath, "utf8"));
 
-  // D) Get Foundry bytecode from `artifact.bytecode.object`,
+  // D) Get Foundry bytecode
   const abi = lockArtifact.abi;
   let bytecode = lockArtifact.bytecode;
   if (bytecode && bytecode.object) {

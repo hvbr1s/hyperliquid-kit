@@ -8,8 +8,7 @@
     "test": "test"
   },
   "scripts": {
-    "deploy": "npx ts-node script/deploy.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "npx ts-node script/deploy.ts"
   },
   "keywords": [],
   "author": "",

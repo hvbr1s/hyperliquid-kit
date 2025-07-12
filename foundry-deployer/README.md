@@ -1,7 +1,7 @@
 # Fordefi Foundry Contract Deployer
 
 ## Overview
-This script deploys a smart contract using Foundry for compilation and TypeScript for deployment, with Fordefi as the RPC provider and a Fordefi vault as the signer.
+This script deploys a smart contract on HyperEVM using Foundry for compilation and TypeScript for deployment, with Fordefi as the RPC provider and a Fordefi vault as the signer.
 
 ## Prerequisites
 Ensure you have the following set up before running the script:
@@ -34,6 +34,12 @@ Ensure you have the following set up before running the script:
      ```typescript
      address: "0x...", // Replace with your Fordefi EVM Vault address
      ```
+
+## Activate Big HyperEVM Blocks for your account:
+
+```bash
+https://hyperevm-block-toggle.vercel.app/
+```
 
 ## Deployment Process
 
@@ -69,7 +75,7 @@ forge verify-contract \
   --verifier blockscout \
   --verifier-url <blockscout_homepage_explorer_url>/api/
 ```
-for example:
+for example on mainnet:
 ```bash
 forge verify-contract \
   --rpc-url https://rpc.hyperliquid.xyz/evm \
@@ -78,14 +84,18 @@ forge verify-contract \
   0x3025866DC6Cb74466e6D4ac368f1157C85F631c2 \
   src/HypercoreWorker.sol:HyperCoreInteraction
 ```
-or
+or on testnet:
 ```bash
-forge verify-contract \
-  --rpc-url https://rpc.hyperliquid-testnet.xyz/evm \
-  --verifier blockscout \
-  --verifier-url 'https://www.hyperscan.com/api/' \
-  0x3025866DC6Cb74466e6D4ac368f1157C85F631c2 \
-  src/HypercoreWorker.sol:HyperCoreInteraction
+forge verify-contract 0xd6DA4F72a934D58eED204b0E880E09bA7e832Fc0 src/CoreWriterCaller.sol:CoreWriterCaller \
+  --chain-id 998 \
+  --verifier sourcify \
+  --verifier-url https://sourcify.parsec.finance/verify
+```
+
+Check your contract on the explorer, for example:
+
+```bash
+https://testnet.purrsec.com/address/0x9A324ec2ccB8Bd09d062F7Ba1491AB7246dB9565/contract
 ```
 
 ## Troubleshooting
