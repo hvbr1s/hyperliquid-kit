@@ -1,0 +1,28 @@
+{
+  "name": "fordefi-evm-deployer-foundry",
+  "version": "1.0.0",
+  "description": "**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "deploy": "npx ts-node script/deploy.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fordefi/web3-provider": "^0.2.8",
+    "dotenv": "^16.6.1",
+    "ethers": "^6.15.0",
+    "viem": "^2.22.16"
+  },
+  "devDependencies": {
+    "@types/node": "^22.16.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
