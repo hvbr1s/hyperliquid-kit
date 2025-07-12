@@ -4,8 +4,8 @@ import * as hl from "@nktkas/hyperliquid";
 import { ethers } from 'ethers';
 import { FordefiWalletAdapter } from './wallet-adapter';
 
-export async function usdSend(hlConfig: HyperliquidConfig) {
-    if (!hlConfig) {
+export async function usdSend(hyperliquidConfig: HyperliquidConfig) {
+    if (!hyperliquidConfig) {
         throw new Error("Config required!");
     }
     try {
@@ -20,7 +20,9 @@ export async function usdSend(hlConfig: HyperliquidConfig) {
         const wallet = new FordefiWalletAdapter(signer, fordefiConfig.address);
 
         // Instantiate transport
-        const transport = new hl.HttpTransport();
+        const transport = new hl.HttpTransport({
+            isTestnet: hyperliquidConfig.isTestnet
+        });
 
         // Create ExchangeClient with the custom wallet
         const exchClient = new hl.ExchangeClient({ 
@@ -29,17 +31,17 @@ export async function usdSend(hlConfig: HyperliquidConfig) {
         });
         console.log("Exchange client created successfully");
         // Validate amount is not empty
-        if (!hlConfig.amount) {
+        if (!hyperliquidConfig.amount) {
             throw new Error("Amount is required and cannot be empty");
         }
         // Validate destination address format
-        if (!hlConfig.destination || !hlConfig.destination.startsWith('0x')) {
+        if (!hyperliquidConfig.destination || !hyperliquidConfig.destination.startsWith('0x')) {
             throw new Error("Destination must be a valid Ethereum address starting with '0x'");
         }
         // Perform USDC transfer
         const result = await exchClient.usdSend({
-            destination: hlConfig.destination,
-            amount: String(hlConfig.amount),
+            destination: hyperliquidConfig.destination,
+            amount: String(hyperliquidConfig.amount),
         });
         console.log("USDC transfer successful: ", result);
         
