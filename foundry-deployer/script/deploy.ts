@@ -19,7 +19,7 @@ const PEM_PRIVATE_KEY = fs.readFileSync(privateKeyFilePath, "utf8") ??
 
 // 2. Chain ID configuration
 //    Example: deploying on HyperEVM (chainId=137)
-const chainId = 999;
+const chainId = 998;
 
 
 // 3. Construct FordefiWeb3Provider config
@@ -40,7 +40,7 @@ async function main() {
   const signer = await provider.getSigner();
 
   // C) Load the Foundry artifact from `out/Counter.sol/Counter.json`
-  const lockArtifactPath = path.join(__dirname, "..", "out", "HypercoreWorker.sol", "HyperCoreInteraction.json");
+  const lockArtifactPath = path.join(__dirname, "..", "out", "HypercoreWorkerMinimal.sol", "SimplifiedHyperCoreInteraction.json");
   const lockArtifact = JSON.parse(fs.readFileSync(lockArtifactPath, "utf8"));
 
   // D) Get Foundry bytecode from `artifact.bytecode.object`,

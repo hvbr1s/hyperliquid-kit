@@ -6,7 +6,15 @@ import { deposit } from "./hl-deposit";
 
 async function main() {
     try {
-        await usdSend(hyperliquidConfig)
+        if (hyperliquidConfig.action == "deposit"){
+            await deposit(hyperliquidConfig)
+        } else if (hyperliquidConfig.action == "withdraw"){
+            await withdraw3(hyperliquidConfig)
+        } else if (hyperliquidConfig.action == "sendUsd"){
+            await usdSend(hyperliquidConfig)
+        } else {
+            await activateBigBlocks(hyperliquidConfig)
+        }
     } catch (error) {
         console.error("Oops, an error occured: ", error)
     }

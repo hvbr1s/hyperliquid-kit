@@ -1,3 +1,5 @@
 .env
 secret
 node_modules
+dev_bin
+.DS_Store

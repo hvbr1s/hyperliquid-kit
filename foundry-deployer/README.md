@@ -78,6 +78,15 @@ forge verify-contract \
   0x3025866DC6Cb74466e6D4ac368f1157C85F631c2 \
   src/HypercoreWorker.sol:HyperCoreInteraction
 ```
+or
+```bash
+forge verify-contract \
+  --rpc-url https://rpc.hyperliquid-testnet.xyz/evm \
+  --verifier blockscout \
+  --verifier-url 'https://www.hyperscan.com/api/' \
+  0x3025866DC6Cb74466e6D4ac368f1157C85F631c2 \
+  src/HypercoreWorker.sol:HyperCoreInteraction
+```
 
 ## Troubleshooting
 
