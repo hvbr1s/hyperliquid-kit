@@ -40,7 +40,7 @@ async function main() {
   const signer = await provider.getSigner();
 
   // C) Load the Foundry artifact
-  const lockArtifactPath = path.join(__dirname, "..", "out", "CoreWriterCaller.sol", "CoreWriterCaller.json");
+  const lockArtifactPath = path.join(__dirname, "..", "out", "HyperCoreWorker.sol", "HyperCoreWorker.json");
   const lockArtifact = JSON.parse(fs.readFileSync(lockArtifactPath, "utf8"));
 
   // D) Get Foundry bytecode
