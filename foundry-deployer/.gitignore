@@ -1,9 +1,9 @@
 .env
 secret
 node_modules
-dev_bin
 .DS_Store
 cache
 bin/*
 out/*
 lib/*
+package-lock.json
