@@ -6,3 +6,4 @@ dev_bin
 cache
 bin/*
 out/*
+lib/*
