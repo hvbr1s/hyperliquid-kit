@@ -15,5 +15,9 @@ export async function getProvider(fordefiConfig: FordefiProviderConfig) {
         };
         fordefiProvider!.on('connect', onFirstConnect);
     })
+    if (fordefiProvider.getStatus() === 'connected'){
+        console.log("Connection established")
+    }
+
     return fordefiProvider;
 }

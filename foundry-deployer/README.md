@@ -137,7 +137,7 @@ forge verify-contract \
 for example on HyperEVM testnet:
 
 ```bash
-forge verify-contract 0x6e4DEDc15b47A2B13F14882FB5f2f7328163b512 src/HyperCoreWorker.sol:HyperCoreWorker \
+forge verify-contract 0xf0fcf86f67294aa6178d5c7ec501c24e4cf4e27c src/HyperCoreWorker.sol:HyperCoreWorker \
   --chain-id 998 \
   --verifier sourcify \
   --verifier-url https://sourcify.parsec.finance/verify
@@ -150,8 +150,16 @@ forge verify-contract \
   --rpc-url https://rpc.hyperliquid.xyz/evm \
   --verifier blockscout \
   --verifier-url 'https://www.hyperscan.com/api/' \
-  0x6e4DEDc15b47A2B13F14882FB5f2f7328163b512 \
-  src/HyperCoreWorker.sol:HyperCoreWorker
+  0xD032D91b02123DAE424923EA36eA5126c2f6f5e5 \
+  src/StableHype.sol:HypeUSD
+```
+or
+
+```bash
+forge verify-contract 0xf0fcf86f67294aa6178d5c7ec501c24e4cf4e27c src/StableHype.sol:HypeUSD \
+  --chain-id 999 \
+  --verifier sourcify \
+  --verifier-url https://sourcify.parsec.finance/verify
 ```
 
 Check your contract on the explorer, for example:
@@ -169,3 +177,14 @@ If you encounter errors:
 4. Verify the contract was compiled successfully (`out` directory should contain your contract artifacts)
 5. Make sure the chainId and RPC URL match your target network
 6. Check that the artifact path in `deploy.ts` matches your contract name
+
+# Querying HyperCore User data via API:
+
+```bash
+curl -X POST https://api.hyperliquid.xyz/info \
+  -H "Content-Type: application/json" \
+  -d '{
+    "type": "spotClearinghouseState",
+    "user": "0x8BFCF9e2764BC84DE4BBd0a0f5AAF19F47027A73"
+  }'
+```

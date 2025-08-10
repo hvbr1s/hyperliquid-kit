@@ -1,4 +1,3 @@
-import { activateBigBlocks, deactivateBigBlocks } from "./hl-activate-big-blocks"
 import { hyperliquidConfig } from "./config";
 import { withdraw3 } from "./hl-withdraw";
 import { usdSend } from "./hl-send-usdc";
@@ -10,10 +9,8 @@ async function main() {
             await deposit(hyperliquidConfig)
         } else if (hyperliquidConfig.action == "withdraw"){
             await withdraw3(hyperliquidConfig)
-        } else if (hyperliquidConfig.action == "sendUsd"){
-            await usdSend(hyperliquidConfig)
         } else {
-            await activateBigBlocks(hyperliquidConfig)
+            await usdSend(hyperliquidConfig)
         }
     } catch (error) {
         console.error("Oops, an error occured: ", error)

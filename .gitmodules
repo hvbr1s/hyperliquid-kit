@@ -1,0 +1,6 @@
+[submodule "foundry-deployer/lib/hyper-evm-lib"]
+	path = foundry-deployer/lib/hyper-evm-lib
+	url = https://github.com/hyperliquid-dev/hyper-evm-lib
+[submodule "foundry-deployer/lib/solmate"]
+	path = foundry-deployer/lib/solmate
+	url = https://github.com/transmissions11/solmate

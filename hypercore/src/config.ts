@@ -6,7 +6,7 @@ import { type } from 'os';
 dotenv.config()
 
 export interface HyperliquidConfig { 
-    action: "deposit" | "withdraw" | "sendUsd" | "activateBigBlocks",
+    action: "deposit" | "withdraw" | "sendUsd"
     isTestnet: boolean,
     destination?: `0x${string}`,
     amount?: string,
